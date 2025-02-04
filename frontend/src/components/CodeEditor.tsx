@@ -81,7 +81,7 @@ export default function CodeEditor({ code, onChange, websocket, clientId }: Code
       </div>
       <div className="p-4 border-t border-gray-200 space-y-4">
         {progress && (
-          <div className="p-3 bg-gray-50 rounded">
+          <div className={`p-3 bg-gray-50 rounded progress-message ${progress ? 'show' : ''}`}>
             <p className="text-sm text-gray-600">{progress}</p>
             {isProcessing && (
               <div className="mt-2 w-full h-1 bg-gray-200 rounded-full overflow-hidden">
@@ -94,10 +94,11 @@ export default function CodeEditor({ code, onChange, websocket, clientId }: Code
           <button
             onClick={handleSubmit}
             disabled={isProcessing || !websocket}
-            className={`px-4 py-2 bg-blue-500 text-white rounded transition-colors ${
+            className={`px-4 py-2 bg-blue-500 text-white rounded transition-colors flex items-center ${
               isProcessing || !websocket ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-600'
             }`}
           >
+            {isProcessing && <div className="loading-spinner" />}
             {isProcessing ? 'Processing...' : 'Submit Code'}
           </button>
         </div>

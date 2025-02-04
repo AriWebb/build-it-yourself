@@ -65,6 +65,8 @@ async def analyze_code(file: UploadFile, client_id: str):
         
         # Send parsing progress update
         await send_progress_update(client_id, "Parsing code and fetching dependencies...")
+
+        await asyncio.sleep(.3)
         
         # Run the dependency analysis
         dependency_map = await asyncio.get_event_loop().run_in_executor(

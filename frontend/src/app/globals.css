@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --primary-blue: #3b82f6;  /* Tailwind blue-500 */
+  --transition-standard: 0.7s ease-in-out;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spinner {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid #f3f4f6;  /* gray-100 */
+  border-top-color: var(--primary-blue);
+  border-radius: 50%;
+  animation: spin 1.3s linear infinite;
+  margin-right: 0.5rem;
+}
+
+.progress-message {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity var(--transition-standard), transform var(--transition-standard);
+}
+
+.progress-message.show {
+  opacity: 1;
+  transform: translateY(0);
+}

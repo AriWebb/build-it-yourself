@@ -7,6 +7,9 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Build It Yourself',
   description: 'Transform your Python code by removing external dependencies',
+  icons: {
+    icon: '/favicon.png'
+  }
 };
 
 export default function RootLayout({
@@ -16,6 +19,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <link
+        rel="icon"
+        href="/icon.png"
+        type="image/png"
+        sizes="any"
+      />
       <body className={inter.className}>{children}</body>
     </html>
   );

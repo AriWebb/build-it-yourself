@@ -3,10 +3,17 @@
 install-dev:
 	pip install -r requirements-dev.txt
 
-init: install-dev
+init:
+	@if [ ! -d ".venv" ]; then \
+		python3 -m venv .venv; \
+	fi
+	@. .venv/bin/activate && pip install -r requirements-dev.txt
 
 test:
 	python3 -m pytest test/ -vv $(if $(findstring verbose,$(MAKECMDGOALS)),-s,)
+
+run:
+	@. .venv/bin/activate && python3 src/server.py
 
 test-verbose:
 	python3 -m pytest test/ -vv -s

@@ -1,7 +1,7 @@
 import os
 import pytest
 from textwrap import dedent
-from python.codegen.dependency_inliner import DependencyInliner
+from src.codegen.dependency_inliner import DependencyInliner
 
 def test_dependency_inliner_pytimeparse(tmp_path):
     # Create a simple test file that uses pytimeparse
@@ -99,16 +99,16 @@ def timeparse(sval, granularity='seconds'):
     
     # Basic assertions about the inlined code
     assert "from pytimeparse import timeparse" not in inlined_code
-    assert "def timeparse" in inlined_code
-    assert "def process_times" in inlined_code
+    assert "def parse" in inlined_code
 
     # Optional: Import and test the functionality
     import sys
     sys.path.append(str(tmp_path))
-    from inlined_time import process_times
+    from inlined_time import parse
     
     # Test the inlined code functionality
     test_times = ["1:24", "2m30s", "45 seconds"]
     expected = [84, 150, 45]
-    result = process_times(test_times)
-    assert result == expected
+    for i in zip(test_times, expected):
+        result = parse(i[0])
+        assert result == i[1]

@@ -76,7 +76,7 @@ async def analyze_code(file: UploadFile, client_id: str):
         )
         
         # Send generation progress update
-        await send_progress_update(client_id, "Generating code with dependency results...")
+        await send_progress_update(client_id, "Generating code with dependency results... (this may take a while)")
         
         # Run the code generation
         result = await asyncio.get_event_loop().run_in_executor(

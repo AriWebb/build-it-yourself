@@ -1,6 +1,6 @@
 import pytest
 import json
-from depanalyzer import DependencyAnalyzer
+from src.depanalyzer.dependency_analyzer import DependencyAnalyzer
 
 def test_ignored_imports(analyzer, create_test_file):
     """Test that imports in MODULES_TO_IGNORE are properly ignored."""

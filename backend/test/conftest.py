@@ -7,7 +7,7 @@ python_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../python'
 sys.path.insert(0, python_dir)
 
 import pytest
-from depanalyzer import DependencyAnalyzer
+from src.depanalyzer.dependency_analyzer import DependencyAnalyzer
 
 @pytest.fixture
 def analyzer():
